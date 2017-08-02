@@ -1,0 +1,57 @@
+(html)
+<!DOCTYPE html>
+<html>
+<body onload="loadImage()">
+    <h1> Photo Gallery </h1>
+    <img id = "pics" src = "URL">
+    <br>
+
+    <button id = "left" onclick = "left()">Left</button>
+    <button id = "right" onclick = "right()">Right</button>
+    
+    <p>Index: <div id = "demo"></div></p>
+    </body>
+</html>
+
+(css)
+
+img{
+ height: 200px;
+ width: 200px;
+}
+h1{
+   font-family: "Lucida Console", Lucida, serif;
+}
+body{ 
+    background-color: lavender;
+}
+
+(javascript)
+
+var imgindex = 0;
+var images = ["http://www.cruise-panorama.com/wp-content/uploads/2014/10/Lighthouse-bay-Kilauea-Kauai-Hawaii.jpg", "http://image.traveltimes.vn/traveltimes.vn/2015/06/18/16/20150618162526-du-lich-maldives-traveltimes-vn-11.jpg", "http://cdn.touropia.com/gfx/d/tourist-attractions-in-greece/santorini.jpg?v=1"];
+function loadImage(){
+    document.getElementById("pics").src = images[imgindex];
+}
+function left(){
+    imgindex--;
+    
+if (imgindex < 0){
+    imgindex = 2;
+    }
+    
+    loadImage();
+    document.getElementById("demo").innerHTML = imgindex;
+    
+}
+
+function right(){
+    imgindex++;
+    
+if (imgindex > 2){
+    imgindex = 0;
+}
+
+loadImage();
+document.getElementById("demo").innerHTML = imgindex;
+}
